@@ -1,8 +1,8 @@
 *** Settings ***
 Library    RequestsLibrary
-Resource    ../api_resources/utility.robot
-Resource    ../api_resources/operation.robot
-Resource    ../api_configs.robot
+Resource    ../ApiResources/utility.robot
+Resource    ../ApiResources/operation.robot
+Resource    ../ApiConfig.robot
 
 #robot -d Results -i e2e  Execute_Test
 
