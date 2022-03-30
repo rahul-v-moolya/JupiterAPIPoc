@@ -34,13 +34,14 @@ GET - https://api.staging.jupiter.money/pay/v1/payees/all
 GET - https://api.staging.jupiter.money/pay/v1/transfers/applicable-rails
     [Tags]    TC03
     ${Final_Response} =  Trigger GET  ${env_domain_name}  ${get_applicable_rails_resource_path}  ${get_applicable_rails_headers}  ${get_applicable_rails_params}
-    # ${id} =  Extract attribute from response  ${Final_Response}  $.detail
-    Sleep  2s
+    ${transferType} =  Extract attribute from response  ${Final_Response}  $.[0]["transferType"]
+    ${perDayTransactionAmountLimit} =  Extract attribute from response  ${Final_Response}  $.[0]["perDayTransactionAmountLimit"]
+    ${perTransactionAmountLimit} =  Extract attribute from response  ${Final_Response}  $.[0]["perTransactionAmountLimit"]
+    ${isAllowed} =  Extract attribute from response  ${Final_Response}  $.[0]["isAllowed"]
 
 GET - https://api.staging.jupiter.money/pay/v1/modes/transfers/banks
     [Tags]    TC04
     ${Final_Response} =  Trigger GET  ${env_domain_name}  ${get_all_banks_path}  ${get_all_banks_header}    {}
-    Sleep  2s
 
 GET - https://api.staging.jupiter.money/pay/v1/transfers/payees/recent
     [Tags]    TC05
