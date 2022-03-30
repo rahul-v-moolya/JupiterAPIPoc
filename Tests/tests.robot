@@ -17,13 +17,19 @@ GET - https://api.staging.jupiter.money/pay/v1/upi/user-registration/
     should be equal     [true]   ${isRegistered}
     ${sponsorBank} =  Extract attribute from response  ${Final_Response}  $["sponsorBank"]
     should be equal     urn:spsba:axis   ${sponsorBank}
-    Sleep  2s
 
 GET - https://api.staging.jupiter.money/pay/v1/payees/all
     [Tags]    TC02
     ${Final_Response} =  Trigger GET  ${env_domain_name}  ${get_all_payees_resource_path}  ${get_all_payees_headers}  ${get_all_payees_params}
-    # ${id} =  Extract attribute from response  ${Final_Response}  $.detail
-    Sleep  2s
+    ${payeeId} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeId"]
+    ${accountHolderName} =  Extract attribute from response  ${Final_Response}  $.[0]["accountHolderName"]
+    ${ifsc} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["ifsc"]
+    ${name} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["name"]
+    ${institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["institutionType"]
+    ${accountNumber} =  Extract attribute from response  ${Final_Response}  $.[0]["accountNumber"]
+    ${payeeBankDetails_id} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["id"]
+    ${payeeType} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeType"]
+    ${payeeBankDetails_institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["institutionType"]
 
 GET - https://api.staging.jupiter.money/pay/v1/transfers/applicable-rails
     [Tags]    TC03
@@ -34,11 +40,17 @@ GET - https://api.staging.jupiter.money/pay/v1/transfers/applicable-rails
 GET - https://api.staging.jupiter.money/pay/v1/modes/transfers/banks
     [Tags]    TC04
     ${Final_Response} =  Trigger GET  ${env_domain_name}  ${get_all_banks_path}  ${get_all_banks_header}    {}
-    # ${id} =  Extract attribute from response  ${Final_Response}  $.detail
     Sleep  2s
 
 GET - https://api.staging.jupiter.money/pay/v1/transfers/payees/recent
     [Tags]    TC05
     ${Final_Response} =  Trigger GET  ${env_domain_name}  ${get_recent_payees_path}  ${get_recent_payees_header}    {}
-    # ${id} =  Extract attribute from response  ${Final_Response}  $.detail
-    Sleep  2s
+    ${payeeId} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeId"]
+    ${accountHolderName} =  Extract attribute from response  ${Final_Response}  $.[0]["accountHolderName"]
+    ${ifsc} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["ifsc"]
+    ${name} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["name"]
+    ${institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["institutionType"]
+    ${accountNumber} =  Extract attribute from response  ${Final_Response}  $.[0]["accountNumber"]
+    ${payeeBankDetails_id} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["id"]
+    ${payeeType} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeType"]
+    ${payeeBankDetails_institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["institutionType"]
