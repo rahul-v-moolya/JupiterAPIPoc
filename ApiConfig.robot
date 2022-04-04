@@ -25,3 +25,26 @@ ${get_all_banks_header} =  {"X-User-Id":"45a23b7f-4189-47d8-8592-0044af3d194b","
 #Get-RecentPayees
 ${get_recent_payees_path} =  /transfers/payees/recent
 ${get_recent_payees_header} =  {"X-User-Id":"45a23b7f-4189-47d8-8592-0044af3d194b","X-Tenant":"urn:tenant:jupiter"}
+
+#negative  scenarios
+#Get-UserRegistration
+${neg_get_user_registration_url} =  /upi/user-registration/4cbaaefeb551329f
+${neg_get_user_registration_headers} =  {"X-Jupiter-Sponsor-Bankz":"urnz:spsbaz:axisz", "X-User-Idz":"11a11b7a-1111-11d8-8592-1111aa1a111a","X-Tenantz":"urnz:tenantz:jupiterz"}
+
+#Get-AllPayees
+${neg_get_all_payees_resource_path} =  /payees/all
+${neg_get_all_payees_params} =  {"payeeTypes":"moneyz.jupiterz.payeez.typesz.ifscz-linkedz"}
+${neg_get_all_payees_headers} =  {"X-User-Idz":"11a11b7a-1111-11d8-8592-1111aa1a111a","X-Tenantz":"urnz:tenantz:jupiterz"}
+
+#Get-ApplicableRails
+${neg_get_applicable_rails_resource_path} =  /transfers/applicable-rails
+${neg_get_applicable_rails_params} =  {"bankId":"1111111f-11aa-1111-1aa0-11111aaaaa1a","amount":"20"}
+${neg_get_applicable_rails_headers} =  {"X-User-Idz":"11a11b7a-1111-11d8-8592-1111aa1a111a","X-Tenantz":"urnz:tenantz:jupiterz"}
+
+#Get-AllBanks
+${neg_get_all_banks_path} =  /modes/transfers/banks
+${neg_get_all_banks_header} =  {"X-User-Idz":"11a11b7a-1111-11d8-8592-1111aa1a111a","X-Tenantz":"urnz:tenantz:jupiterz"}
+
+#Get-RecentPayees
+${neg_get_recent_payees_path} =  /transfers/payees/recent
+${neg_get_recent_payees_header} =  {"X-User-Idz":"11a11b7a-1111-11d8-8592-1111aa1a111a","X-Tenantz":"urnz:tenantz:jupiterz"}
