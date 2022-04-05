@@ -60,22 +60,41 @@ GET - https://api.staging.jupiter.money/pay/v1/transfers/payees/recent
 GET - https://api.staging.jupiter.money/pay/v1/upi/user-registration/
     [Tags]    TC06  Negative
     ${Final_Response} =  Trigger GET for negative scenario  ${env_domain_name}  ${neg_get_user_registration_url}  ${neg_get_user_registration_headers}  {}
-
-
+    ${error_message} =  Extract attribute from response  ${Final_Response}  $.["message"]
+    should be equal     No user found from applicable headers.   ${error_message}
+    ${errorCode} =  Extract attribute from response  ${Final_Response}  $.["errorCode"]
+    should be equal     authorization_error   ${errorCode}
+    
 GET - https://api.staging.jupiter.money/pay/v1/payees/all
     [Tags]    TC07  Negative
     ${Final_Response} =  Trigger GET for negative scenario  ${env_domain_name}  ${neg_get_all_payees_resource_path}  ${neg_get_all_payees_headers}  ${neg_get_all_payees_params}
+    ${error_message} =  Extract attribute from response  ${Final_Response}  $.["message"]
+    should be equal     No user found from applicable headers.   ${error_message}
+    ${errorCode} =  Extract attribute from response  ${Final_Response}  $.["errorCode"]
+    should be equal     authorization_error   ${errorCode}
     
 
 GET - https://api.staging.jupiter.money/pay/v1/transfers/applicable-rails
     [Tags]    TC08  Negative
     ${Final_Response} =  Trigger GET for negative scenario  ${env_domain_name}  ${neg_get_applicable_rails_resource_path}  ${neg_get_applicable_rails_headers}  ${neg_get_applicable_rails_params}
+    ${error_message} =  Extract attribute from response  ${Final_Response}  $.["message"]
+    should be equal     No user found from applicable headers.   ${error_message}
+    ${errorCode} =  Extract attribute from response  ${Final_Response}  $.["errorCode"]
+    should be equal     authorization_error   ${errorCode}
     
 
 GET - https://api.staging.jupiter.money/pay/v1/modes/transfers/banks
     [Tags]    TC09  Negative
     ${Final_Response} =  Trigger GET for negative scenario  ${env_domain_name}  ${neg_get_all_banks_path}  ${neg_get_all_banks_header}    {}
+    ${error_message} =  Extract attribute from response  ${Final_Response}  $.["message"]
+    should be equal     No user found from applicable headers.   ${error_message}
+    ${errorCode} =  Extract attribute from response  ${Final_Response}  $.["errorCode"]
+    should be equal     authorization_error   ${errorCode}
 
 GET - https://api.staging.jupiter.money/pay/v1/transfers/payees/recent
     [Tags]    TC10  Negative
     ${Final_Response} =  Trigger GET for negative scenario  ${env_domain_name}  ${neg_get_recent_payees_path}  ${neg_get_recent_payees_header}    {}
+    ${error_message} =  Extract attribute from response  ${Final_Response}  $.["message"]
+    should be equal     No user found from applicable headers.   ${error_message}
+    ${errorCode} =  Extract attribute from response  ${Final_Response}  $.["errorCode"]
+    should be equal     authorization_error   ${errorCode}
