@@ -97,4 +97,4 @@ GET - https://api.staging.jupiter.money/pay/v1/transfers/payees/recent
     ${error_message} =  Extract attribute from response  ${Final_Response}  $.["message"]
     should be equal     No user found from applicable headers.   ${error_message}
     ${errorCode} =  Extract attribute from response  ${Final_Response}  $.["errorCode"]
-    should be equal     authorization_error   ${errorCode}
+    should not be equal     authorization_error   ${errorCode}
