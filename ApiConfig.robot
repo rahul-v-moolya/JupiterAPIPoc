@@ -10,7 +10,7 @@ ${get_user_registration_headers} =  {"X-Jupiter-Sponsor-Bank":"urn:spsba:axis", 
 
 #Get-AllPayees
 ${get_all_payees_resource_path} =  /payees/all
-${get_all_payees_params} =  {"payeeTypes":"money.jupiter.payee.types.ifsc-linked"}
+${get_all_payees_params} =  {"payeeTypes":"money.jupiter.payee.types.vpa-enabled"}
 ${get_all_payees_headers} =  {"X-User-Id":"45a23b7f-4189-47d8-8592-0044af3d194b","X-Tenant":"urn:tenant:jupiter"}
 
 #Get-ApplicableRails
