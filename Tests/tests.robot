@@ -23,13 +23,17 @@ GET - https://api.staging.jupiter.money/pay/v1/payees/all
     ${Final_Response} =  Trigger GET  ${env_domain_name}  ${get_all_payees_resource_path}  ${get_all_payees_headers}  ${get_all_payees_params}
     ${payeeId} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeId"]
     ${accountHolderName} =  Extract attribute from response  ${Final_Response}  $.[0]["accountHolderName"]
-    ${ifsc} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["ifsc"]
-    ${name} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["name"]
-    ${institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["institutionType"]
-    ${accountNumber} =  Extract attribute from response  ${Final_Response}  $.[0]["accountNumber"]
-    ${payeeBankDetails_id} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["id"]
+    ${nick_name} =  Extract attribute from response  ${Final_Response}  $.[0]["nickname"]
+    ${accountNumber} =  Extract attribute from response  ${Final_Response}  $.[0]["vpa"]
+    ${accountNumber} =  Extract attribute from response  ${Final_Response}  $.[0]["isActive"]
     ${payeeType} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeType"]
-    ${payeeBankDetails_institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["institutionType"]
+    ${payeeType} =  Extract attribute from response  ${Final_Response}  $.[0]["activatedAt"]
+    # ${ifsc} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["ifsc"]
+    # ${name} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["name"]
+    # ${institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["ifsc"]["institutionType"]
+    # ${accountNumber} =  Extract attribute from response  ${Final_Response}  $.[0]["accountNumber"]
+    # ${payeeBankDetails_id} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["id"]
+    # ${payeeBankDetails_institutionType} =  Extract attribute from response  ${Final_Response}  $.[0]["payeeBankDetails"]["institutionType"]
 
 GET - https://api.staging.jupiter.money/pay/v1/transfers/applicable-rails
     [Tags]    TC03  Positive
